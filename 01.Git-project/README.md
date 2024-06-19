@@ -167,7 +167,7 @@ This "pull" command fetches the main branch (Remember th main branch now has Mor
 
 ![gitpull2](./img/29.gitpull2.png)
 
-Edit the event page
+Edit the event page: You can use any text editor to edit but you can also use the visual studio code for the edit. If you use the VScode for your edit, do not forget to save(CTRL s), because that is the only way Git will recognise the changes made.
 
 >vim events.html
 
