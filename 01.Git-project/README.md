@@ -1,4 +1,4 @@
-# **GIT PROJECT (Enhancing a Community's Library Website) **
+# **GIT PROJECT (Enhancing a Community's Library Website)**
 
 ## OBJECTIVES
 - Practice cloning a repository and working with branches in Git.
