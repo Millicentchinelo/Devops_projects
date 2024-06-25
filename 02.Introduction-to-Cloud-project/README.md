@@ -1,6 +1,6 @@
 # **Capstone Project: E-commerce Platform Deployment with Git, Linux, and AWS**
 
-## **Background Scenario for The Project**
+## **Background Scenario for this Project**
 ---
 
 You have been assigned to develop an e-commerce website for a new online market place named "MarketPeak". This platform will feature product listings, a shopping cart, and user authentication. Your objective is to utilize Git for version control, develop the platform in a linux environment and deploy it on an AWS EC2 instance. You can use any suitable website template to kickstart your development. Free sample template can be found at: [Tooplate](https://tooplate.com)
@@ -18,15 +18,15 @@ git init
 
 ## Obtain and Prepare the E-commerce Website Template
 
-Instead of developing the website from scratch, you will use a pre-existing website template, which will allow you focus on the deployment and operational aspects, rather than on web development.  
+Instead of developing the website from scratch, you will use a pre-existing website template, which will allow you focus on the deployment and operational aspects, rather than the web development.  
 
-. Download a Website Template, visit [Tooplate](tooplate.com) or any other free template resource, and download a suitable e-commerce website template. Get a template that is ready to use and require minimal adjustments.
++ Download a Website Template, visit [Tooplate](tooplate.com) or any other free template resource, and download a suitable e-commerce website template. Get a template that is ready to use and require minimal adjustments.
 
-. Extract the downloaded template and ensure you save it in your project directory (i.e MarketPeak_Ecommerce)
++ Extract the downloaded template and ensure you save it in your project directory (i.e MarketPeak_Ecommerce)
 
 ## Stage and Commit the Template to Git
 
-Add the website files to Git repository and set your Git global configuration with your username and email. Commit your changes with a clear, descriptive message. In the command below the dot "." signifies present directory. Instead of using "git add filename", you can use "git add ." which is preferable because it's more than one file
+Add the website files to Git repository and set your Git global configuration with your username and email. Commit your changes with a clear, descriptive message. In the command below, the dot "." signifies present directory. Instead of using "git add filename", you can use "git add ." which is preferable because it's more than one file
 
 ```
 git add .
@@ -43,17 +43,17 @@ git commit -m "initial commit with basic e-commerce website structure"
 After intializing and adding your e-commerce website template, it is neccessary to push your code to a remote repository on GitHub. This step is crucial for version control and collaboration.
 
 - Create a remote repository on Github by login into your Github account and creating a new repository named "MarketPeak_Ecommerce". Leave the repository empty without initializing it with a README, .gitignore, or license.
-- Link your local repository to Github by opening your terminal(VScode, windows Powershell, Mobaxterm etc), navigate to your project directory, add the remote repository URL to your locall repository configuration.
+- Link your local repository to Github by opening your terminal(VScode, windows Powershell, Mobaxterm etc), navigate to your project directory, add the remote repository URL to your local repository configuration.
 
 ```
 git remote add origin http://github.com/your-git-username/MarketPeak_Ecommerce.git
 ```
-> [!Note]:
+> [!Note]
 > Ensure you replace "your-git-username" in the above command. with your actual git username.
 
 
 
-Push your code to upload your local repository content to your GitHub repository but first, you have to create the branch "main" and push from it 
+Push your code to upload your local repository content to your GitHub repository but first, you have to create the "main" branch and push from it 
 
 ```
 git branch -M main
@@ -70,7 +70,7 @@ To deploy "MarketPeak_Ecommerce" platform, you'll start by setting up an Amazon 
 
 ![ec2launch](./img/8.Ec2launch.png)
 
-- Launch an EC2 instance using an Amazon Linux AMI: on the name tag, you can name the EC2 "MarketPeak_Ecommerce". Choose Amazon Linux as your AMI. For instance type, you should pick t2 micro which is free tier. Next, you create a key pair. It is important to note the name your gave your key pair and note where it is downloaded into. The key will be need when you want to SSH into your instance from your terminal. Then, create a security group, ensure you choose the allow SSH and Allow HTTP as shown in the image below. By your right, check the summary of the choices(cross-check that you made  the right choice), then click on launch instance.
+- Launch an EC2 instance using an Amazon Linux AMI: on the name tag, you can name the EC2 "MarketPeak_Ecommerce". Choose Amazon Linux as your AMI. For instance type, you should pick t2 micro which is free tier. Next, you create a key pair. It is important to note the name you gave your key pair and note where it is downloaded into. The key will be need when you want to SSH into your instance from your terminal. Then, create a security group, ensure you choose the allow SSH and Allow HTTP as shown in the image below. By your right, check the summary of the choices you made(cross-check that you made the right choice), then click on launch instance.
 
 ![ec2process](./img/8.ec2launchprocess.png)
 
@@ -82,8 +82,11 @@ To deploy "MarketPeak_Ecommerce" platform, you'll start by setting up an Amazon 
 
 ![ec2sucess](./img/9.ec2_success.png)
 
-- Connect to the instance using SSH: To connect the instance created,Navigate back to the instances page, select that particular EC2 instance named MarketPeak_Ecommerce. On the upper right, click on connect. Choose SSH client, and click on example to copy the code as shown in the image below. 
-Go to your terminal. Navigate to where you saved your secret key(it is usually in download directory). Ls to veiw and be sure your secret key is in your present directly. Once you see your secret key in your directory, then paste the ssh code you copied earlier.
+- Connect to the instance using SSH: To connect the instance created, Navigate back to the instances page, select that particular EC2 instance named MarketPeak_Ecommerce. On the upper right, click on connect. Choose SSH client, and click on example to copy the code as shown in the image below. 
+Go to your terminal. Navigate to where you saved your secret key(it is usually in download directory). Ls, to veiw and be sure your secret key is in your present directly. Once you see your secret key in your directory, then paste the ssh code you copied earlier.
+
+> [!Note]
+> You won't be able to SSH into your instance, if the secret key is not in present directory
 
 ```
 ls
@@ -114,7 +117,7 @@ To see the ssh or http link to clone your repository
 
 ![getcode2](./img/17b.gitgetcode.png)
 
-### **SSH Method:**
+1. ### **SSH Method:**
 
 -	On your EC2 instance that you have SSHed into, generate SSH keypair using ssh-keygen.
 
@@ -132,7 +135,7 @@ cat /home/ubuntu/.ssh/id_rsa.pub
 
 ![cat](./img/15.cat_home.png)
 
->[!Note]:
+>[!Note]
 > Your ssh public key will different
 
 -	Add the SSH public key to your GitHub account: Navigate to the right of your GitHub account. click on your profile picture to expose other options. Then click on settings as shown in the image below.  Next, choose SSH and GPG keys. By the right of the SSH key, click "New SSH key". Paste the public key copied earlier and save it.
@@ -147,7 +150,7 @@ cat /home/ubuntu/.ssh/id_rsa.pub
 
 
 
--	Use the SSH clone URL to clone the repository:Copy
+-	Use the SSH clone URL to clone the repository:
 
 ```
 git clone git@github.com:your username/MarketPeak_Ecommerce.git
@@ -157,13 +160,13 @@ git clone git@github.com:your username/MarketPeak_Ecommerce.git
 
 ![gitclone](./img/19.gitclone.png)
 
-### **HTTPS Method:**
+2. ### **HTTPS Method:**
 For repositories that you plan to clone without setting up SSH keys, use the HTTPS URL. GitHub will prompt for your username and password:
 
 ```
 git clone https://github.com/yourusername/MarketPeak_Ecommerce.git
 ```
-> [!Note]:
+> [!Note]
 > Now when you check the content of your present directory using ls-command, you will see your MarketPeak_Ecommerce directory
 
 ```
@@ -386,6 +389,7 @@ Then I pasted the public ip of the instance/the template name and the issue was 
 http://public_ip/2130_waso_strategy
 ```
 ![webresolved](./img/22.websiteerror_resolved.png)
+![webpage](./img/23.websiteworking.png)
 
 6. Webpage Not reflecting Edited Content: After editing my index.html file with new title and content. I reloaded my website but it was still showing the old content.
 
@@ -395,6 +399,12 @@ http://public_ip/2130_waso_strategy
 sudo rm -rf /var/www/html/*
 sudo cp -r ~/MarketPeak_Ecommerce/* /var/www/html/
 ```
+Reload the Httpd server using the command:
+
+```
+sudo systemctl reload httpd
+```
+After  this reloading the web browser will give you the updated version.
 
 
 
