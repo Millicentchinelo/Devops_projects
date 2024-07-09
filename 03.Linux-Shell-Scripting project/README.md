@@ -10,7 +10,10 @@
 echo "WELCOME TO OUR MINI-CALCULATOR"
 #Prompt the user to enter a number for the multiplication table
 read -p "Enter a number for the multiplication: " num
+
 shopt -s nocasematch #command to make the inputs case insensitive
+
+#while-loop to check if num is greater than zero and if to repeat the multiplication table
 while [[ $num -gt 0 || again == y ]]
 do
         #Ask if they want a full table or a partial table
@@ -68,7 +71,13 @@ do
                 #If partial, prompt for the start and end numbers of the range
                 read -p "Enter the starting number: " s_num #input for starting number
                 read -p "Enter the ending number: " e_num   #input for ending number
-                if [[ $style == d ]]
+
+                #incase of non-interger input for s_num and e_num
+                if [[ -n ${s_num//[0-9]/} || -n ${e_num//[0-9]/} ]] 
+                then
+                        echo " Value entered is invalid, Please Enter a number between 1 to 10 "
+                
+                elif [[ $style == d ]]
                 then
 
                         if [[ $s_num -gt 0  && $e_num -le 10 ]]
@@ -180,10 +189,10 @@ do
         read -p "Enter a number for the multiplication: " num
 done
 
-#incase of error of invalid number input
-if [[ $num -lt 0 ]]
+#incase of error of invalid number or non-interger input
+if [[ $num -lt 0 || -n ${num//[0-9]/} ]]
 then
-        echo "invalid number, Please Enter a number greater than Zero "
+        echo "$num is an invalid value, Please Enter a number greater than Zero "
 fi
 
 #Closing Note
