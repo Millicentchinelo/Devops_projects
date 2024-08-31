@@ -400,18 +400,7 @@ Then,I pushed to dockerhub and deleted the wrong image, I reapplied the deployme
 
 4. Ensure your Docker desktop is open as your are creating the image and working on this project.
 
-## TROUBLESHOOTING
-
-1. To install kind, you have to open the terminal as "run as administrator"
-
-2. When installing kind in the "-y" in the command in order for it to automatically reply any prompt that will occur e.g
-
-```
-choco install -y kind
-```
-3. Leave your docker destop app open while running this project if not it will be the cointainer won't run
-
-4. In the docker build command, always include the directory(use "." if it is in the present directory)
+5. In the docker build command, always include the directory(use "." if it is in the present directory)
 e.g
 ```
 docker build -t dockerfile .
