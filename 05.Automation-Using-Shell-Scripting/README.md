@@ -424,6 +424,8 @@ assign_users_to_group() {
 
 create_iam_users
 create_iam_group
+
+#call function to attach admin policy to group and assign users to earlier created group
 attach_admin_policy_to_group
 assign_users_to_group
 
@@ -473,170 +475,7 @@ install_apache() {
             ;;
     esac
 
-    # Create a simple web page
-    echo "<html><body><h1>Hello from $(hostname)</h1></body></html>" | sudo tee /var/www/html/index.html
-
-    # Disable password authentication for SSH
-    sudo sed -i 's/^#PasswordAuthentication yes/PasswordAuthentication no/' /etc/ssh/sshd_config
-    sudo systemctl restart sshd
-
-    # Install and configure Fail2Ban
-    case "$OS" in
-        amzn|centos)
-            sudo amazon-linux-extras install epel -y
-            sudo yum install fail2ban -y
-            ;;
-        ubuntu)
-            sudo apt-get install -y fail2ban
-            ;;
-    esac
-
-    cat << 'EOF' | sudo tee /etc/fail2ban/jail.local
-[sshd]
-enabled = true
-port = ssh
-filter = sshd
-logpath = /var/log/secure
-maxretry = 5
-EOF
-
-    if [ "$OS" = "ubuntu" ]; then
-        sudo sed -i 's/logpath = \/var\/log\/secure/logpath = \/var\/log\/auth.log/' /etc/fail2ban/jail.local
-    fi
-
-    sudo systemctl start fail2ban
-    sudo systemctl enable fail2ban
-}
-
-# Run the function to install Apache and secure the instance
-install_apache
-
-```
-
-
-
-# Setup and Configuration Script for Apache Web Server and Fail2Ban
-
-## Overview
-
-This script installs and configures the Apache web server and Fail2Ban for enhanced security on different Linux distributions including Amazon Linux, Ubuntu, and CentOS. It also disables password authentication for SSH to increase security.
-
-## Prerequisites
-
-- A Linux server (Amazon Linux, Ubuntu, or CentOS).
-- Sudo privileges on the server.
-
-## Usage
-
-### Running the Script
-
-```bash
-./setup_apache_fail2ban.sh
-```
-
-### Script Details
-
-The script performs the following tasks:
-
-1. **Detect the Operating System**: Identifies the OS to run the appropriate package manager commands.
-2. **Install Apache Web Server**: Installs and con
-
-## Script Components
-
-### 1. Detect the Operating System
-
-Identifies the OS to run the appropriate package manager commands.
-
-```bash
-if [ -f /etc/os-release ]; then
-    . /etc/os-release
-    OS=$ID
-else
-    echo "Unable to detect the operating system."
-    exit 1
-fi
-```
-
-### 2. Install Apache Web Server
-
-Installs and configures Apache based on the detected OS.
-
-```bash
-case "$OS" in
-    amzn)
-        sudo yum update -y
-        sudo yum install -y httpd
-        sudo systemctl start httpd
-        sudo systemctl enable httpd
-        ;;
-    ubuntu)
-        sudo apt-get update -y
-        sudo apt-get install -y apache2
-        sudo systemctl start apache2
-        sudo systemctl enable apache2
-        ;;
-    centos)
-        sudo yum update -y
-        sudo yum install -y httpd
-        sudo systemctl start httpd
-        sudo systemctl enable httpd
-        ;;
-    *)
-        echo "Unsupported operating system: $OS"
-        exit 1
-        ;;
-esac
-```
-
-### 3. Create a Simple Web Page
-
-Adds a basic HTML page to the web server.
-
-```bash
-echo "<html><body><h1>Hello from $(hostname)</h1></body></html>" | sudo tee /var/www/html/index.html
-```
-
-### 4. Disable Password Authentication for SSH
-
-Enhances security by disabling password-based SSH login.
-
-```bash
-sudo sed -i 's/^#PasswordAuthentication yes/PasswordAuthentication no/' /etc/ssh/sshd_config
-sudo systemctl restart sshd
-```
-
-### 5. Install and Configure Fail2Ban
-
-Sets up Fail2Ban to protect against brute-force attacks.
-
-```bash
-case "$OS" in
-    amzn|centos)
-        sudo amazon-linux-extras install epel -y
-        sudo yum install fail2ban -y
-        ;;
-    ubuntu)
-        sudo apt-get install -y fail2ban
-        ;;
-esac
-
-cat << 'EOF' | sudo tee /etc/fail2ban/jail.local
-[sshd]
-enabled = true
-port = ssh
-filter = sshd
-logpath = /var/log/secure
-maxretry = 5
-EOF
-
-if [ "$OS" = "ubuntu" ]; then
-    sudo sed -i 's/logpath = \/var\/log\/secure/logpath = \/var\/log\/auth.log/' /etc/fail2ban/jail.local
-fi
-
-sudo systemctl start fail2ban
-sudo systemctl enable fail2ban
-```
-
+  
 ### Main Execution
 
 Combines all functions to execute the entire script.
@@ -645,33 +484,12 @@ Combines all functions to execute the entire script.
 install_apache
 ```
 
-## Challenges and Solutions
+## TROUBLESHOOTING
 
-### Challenges Encountered
+- Indentication is very important, always check it i.e always check the spacing especially when indented.
+- Test script while still developing the code. Always test at each milestone, that way its easier to debug each step and be sure its functioning appropriately before adding another one.  
+- Always take note of colours and colour change, it could help you identify a mistake on time
+- Add the sleep 1 command where necessary
+- Error can occur due to case disparity, hence always ensure you are using the right, uppercase or lowercase as the command require, keeping in that the commands and bash are generally case sensitive. Uppercase and Lowercase of the same letter will produce different results
+![error](./img/02.errorEc2captalizationerror.png) 
 
-1. **OS Detection**: Ensuring the script runs on different Linux distributions.
-2. **Package Installation Variations**: Handling different package managers and service management commands.
-3. **Security Enhancements**: Ensuring SSH security without locking out legitimate users.
-
-### Solutions Implemented
-
-1. **Unified OS Detection**: Used `/etc/os-release` to reliably detect the OS.
-2. **Conditional Commands**: Used `case` statements to run OS-specific commands.
-3. **Configuration Automation**: Automated SSH configuration changes and Fail2Ban setup to enhance security without manual intervention.
-4. Fail2Ban is a security tool that helps protect servers from brute-force attacks by monitoring log files and banning IP addresses that show malicious behavior. Here are its main functions:
-
-    - **Monitoring Log Files**: Fail2Ban watches over log files (like SSH, Apache, etc.) for failed login attempts and other suspicious activities.
-    - **Pattern Matching**: It uses filters defined with regular expressions to identify patterns of failed access attempts or attacks.
-    - **Banning IP Addresses**: When Fail2Ban detects a predefined number of failed login attempts from an IP address, it automatically bans that IP address for a specified period.
-    - **Configurable Actions**: The actions Fail2Ban can take include updating firewall rules to block the offending IP, sending alert emails, and more.
-    - **Protecting Various Services**: It can be configured to protect a variety of services, not just SSH, including web servers, mail servers, and more.
-
-In the context of the provided script, Fail2Ban is configured to:
-
-- Monitor the SSH logs (`/var/log/secure` for Amazon Linux and CentOS, `/var/log/auth.log` for Ubuntu).
-- Enable a filter for SSH login attempts.
-- Ban IP addresses that have more than 5 failed login attempts.
-
-The goal is to enhance the security of the server by preventing brute-force attacks on the SSH service.
-
-This comprehensive README provides detailed information about the two scripts, their components, and how to use them effectively to set up AWS infrastructure and configure a secure web server environment.
