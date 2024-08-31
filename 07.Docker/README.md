@@ -4,7 +4,7 @@ Overview
 
 This project is the recreate the the website in project6(containerization) using Docker. It is a continuation from project6. Hence, we will using the docker image created earlier in the kubernetes project for this. EC2 instance will be used to host the docker container.
 
-### Create security group for the EC2
+## **Create Security Group for the EC2**
 - Allow ssh from your ip address(your laptop)
 - Allow http from anywhere
 - Allow TCP from port 8080 , source from anywhere. This is because the port that the docker image is to be veiwed from, according to the dockerfile used to create the image is port 8080. hence traffic from the port 8080 **must** be allowed in the security group of this EC2 instance.
@@ -14,7 +14,7 @@ This project is the recreate the the website in project6(containerization) using
 >[!NOTE]
 >Any port specified on your dockerfile as the port for the application, traffic from that particular port must be allowed on the security group of the EC2 instance to host the docker container. If not, the application or website cannot be viewed over the internet, even though http and https has been allowed in the SG of the instance.
 
-### Create EC2 instance and SSH into the instance
+## **Create EC2 instance and SSH into the instance**
 
 - Create EC2 instance named Docker using ubuntu ami
 
@@ -24,7 +24,7 @@ This project is the recreate the the website in project6(containerization) using
 
 ![ssh](./img/13.ssh.png)
 
-### Install docker on your instance 
+## **Install Docker on your Instance** 
 
 - First, update the package index on your Ubuntu instance:
 
@@ -86,7 +86,7 @@ sudo usermod -aG docker $USER
 >[!NOTE]
 >After running this command, log out and back into the instance for the group change to take effect.
 
-## Pull image from Dockerhub
+## **Pull Image from Dockerhub**
 
 
 Docker images are the building blocks of containers. They are lightweight, portable, and self-sufficient packages that contain everything needed to run a software application, including the code, runtime, libraries, and system tools. Images are created from a set of instructions known as a Dockerfile, which specifies the environment and configuration for the application.
@@ -142,10 +142,10 @@ Explanation of the code snippet above
 5.	CMD: NGINX images come with a default CMD to start the server, so there's no need to specify it explicitly. CMD is used to state the starting point or the command to run first when starting the app.
 6. Entrypoint: Does the same thing as CMD
 
-#### Difference between Entrypoint and CMD
+### Difference between Entrypoint and CMD
 They both serve as your starting point or used to state the commands to run first when starting the app but CMD can be overrided while Entrypoint **can not** be bypassed. CMD can be passed by using a code that overrides in the terminal.
 
-## Run the pulled docker-image
+## **Run the Pulled Docker-image**
 
 ```
 docker run -dp 8080:8080 image-name
@@ -160,7 +160,7 @@ docker run -dp 8080:8080 image-name
 docker ps
 ```
 
-## View the website over the internet
+## **View the Website over the Internet**
 
 - Copy the public ip address of the EC2 instance and paste on your web browser
 
