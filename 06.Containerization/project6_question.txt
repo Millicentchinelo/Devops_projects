@@ -1,0 +1,41 @@
+Capstone Project - Containerization and Container Orchestration
+
+
+Phase 1: Basic Frontend Application with Docker and Kubernetes
+1. Hypothetical Use Case
+You are developing a simple static website (HTML and CSS) for a company's landing page. The goal is to containerize this application using Docker, deploy it to a Kubernetes cluster, and access it through Nginx.
+2. Tasks
+
+Task 1: Set up your project
+•	Create a new project directory.
+•	Inside the directory, create an HTML file (index.html) and a CSS file (styles.css).
+
+Task 2: Initialize Git
+•	Initialize a Git repository in your project directory.
+
+Task 3: Git Commit
+•	Add and commit your initial code to the Git repository.
+
+Task 4: Dockerize the application
+•	Create a Dockerfile specifying Nginx as the base image.
+•	Copy your HTML and CSS files into the Nginx HTML directory. (Use ChatGPT to generate a basic HTML and CSS code for a simple web application)
+
+Task 5: Push to Docker Hub
+•	Log in to Docker Hub.
+•	Push your Docker image to Docker Hub.
+
+Task 6: Set up a Kind Kubernetes Cluster
+•	Install Kind (Kubernetes in Docker).
+•	Create a Kind cluster.
+
+Task 7: Deploy to Kubernetes
+•	Create a Kubernetes Deployment YAML file specifying the image and desired replicas.
+•	Apply the deployment to your cluster.
+
+Task 8: Create a Service (ClusterIP)
+•	Create a Kubernetes Service YAML file specifying the type as ClusterIP.
+•	Apply the service to your cluster.
+
+Task 9: Access the Application
+•	Port-forward to the service to access the application locally.
+•	Open your browser and visit the specified port to view your simple frontend application.

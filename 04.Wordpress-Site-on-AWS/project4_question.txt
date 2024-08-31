@@ -1,0 +1,113 @@
+Capstone Project-WordPress Site on AWS
+
+
+Evaluation Report for the Capstone Project: WordPress Site on AWS
+1.	VPC Setup (20 points):
+•	1.1 IP Address Range Definition (5 points):
+•	Proper definition of the IP address range for the VPC.
+•	1.2 VPC Creation (7 points):
+•	Successful creation of the VPC with public and private subnets.
+•	1.3 Route Table Configuration (8 points):
+•	Correct configuration of route tables for each subnet.
+
+2.	Public and Private Subnet with NAT Gateway (30 points):
+•	2.1 Public Subnet Setup (10 points):
+•	Proper setup of the public subnet for resources accessible from the internet.
+•	2.2 Private Subnet Setup (10 points):
+•	Successful creation of the private subnet for resources with no direct internet access.
+•	2.3 NAT Gateway Configuration (10 points):
+•	Correct configuration of a NAT Gateway for private subnet internet access.
+
+3.	AWS MySQL RDS Setup (20 points):
+•	3.1 RDS Instance Creation (7 points):
+•	Proper creation of an Amazon RDS instance with MySQL engine.
+•	3.2 Security Group Configuration (7 points):
+•	Correct configuration of security groups for the RDS instance.
+•	3.3 WordPress-RDS Connection (6 points):
+•	Successful connection of WordPress to the RDS database.
+
+4.	EFS Setup for WordPress Files (15 points):
+•	4.1 EFS File System Creation (5 points):
+•	Proper creation of an EFS file system.
+•	4.2 Mounting EFS (5 points):
+•	Successful mounting of the EFS file system on WordPress instances.
+•	4.3 WordPress Configuration (5 points):
+•	Correct configuration of WordPress to use the shared file system.
+
+5.	Application Load Balancer and Auto Scaling (15 points):
+•	5.1 ALB Creation (5 points):
+•	Successful creation of an Application Load Balancer.
+•	5.2 Listener Rules Configuration (5 points):
+•	Proper configuration of listener rules for routing traffic to instances.
+•	5.3 Integration with Auto Scaling (5 points):
+•	Correct integration of the Load Balancer with the Auto Scaling group.
+
+Subtotal: 100 points
+
+Capstone Project: WordPress Site on AWS
+
+Project Scenario
+A small to medium-sized digital marketing agency, "DigitalBoost", wants to enhance its online presence by creating a high-performance WordPress-based website for their clients. The agency needs a scalable, secure, and cost-effective solution that can handle increasing traffic and seamlessly integrate with their existing infrastructure. Your task as an AWS Solutions Architect is to design and implement a WordPress solution using various AWS services, such as Networking, Compute, Object Storage, and Databases.
+
+Pre-requisite
+•	Knowledge of TechOps Essentials
+•	Completion of Core 2 Courses and Mini Projects
+The project overview with necessary architecture have been provided as you help DigitalBoost with her Wordpress-Based Website. Kindly follow the instructions below to complete this Capstone Project. Also, necessary scripts have been provided here
+Project Deliverables
+•	Documentation:
+•	Detailed documentation for each component setup.
+•	Explanation of security measures implemented.
+•	Demonstration:
+•	Live demonstration of the WordPress site.
+•	Showcase auto-scaling by simulating increased traffic.
+Project Overview
+ 
+Project Components
+1. VPC Setup
+VPC ARCHITECTURE
+ 
+•	Objective: Create a Virtual Private Cloud (VPC) to isolate and secure the WordPress infrastructure.
+•	Steps:
+•	Define IP address range for the VPC.
+•	Create VPC with public and private subnets.
+•	Configure route tables for each subnet.
+
+2. Public and Private Subnet with NAT Gateway
+NAT GATEWAY ARCHITECTURE
+ 
+•	Objective: Implement a secure network architecture with public and private subnets. Use a NAT Gateway for private subnet internet access.
+•	Steps:
+•	Set up public subnet for resources accessible from the internet.
+•	Create private subnet for resources with no direct internet access.
+•	Configure a NAT Gateway for private subnet internet access.
+
+3. AWS MySQL RDS Setup
+SECURITY GROUP ARCHITECTURE
+ 
+•	Objective: Deploy a managed MySQL database using Amazon RDS for WordPress data storage.
+•	Steps:
+•	Create an Amazon RDS instance with MySQL engine.
+•	Configure security groups for RDS instance.
+•	Connect WordPress to the RDS database.
+
+4. EFS Setup for WordPress Files
+•	Objective: Utilize Amazon Elastic File System (EFS) to store WordPress files for scalable and shared access.
+•	Steps:
+•	Create an EFS file system.
+•	Mount the EFS file system on WordPress instances.
+•	Configure WordPress to use the shared file system.
+
+5. Application Load Balancer
+•	Objective: Set up an Application Load Balancer to distribute incoming traffic among multiple instances, ensuring high availability and fault tolerance.
+•	Steps:
+•	Create an Application Load Balancer.
+•	Configure listener rules for routing traffic to instances.
+•	Integrate Load Balancer with Auto Scaling group.
+
+6. Auto Scaling Group
+•	Objective: Implement Auto Scaling to automatically adjust the number of instances based on traffic load.
+•	Steps:
+•	Create an Auto Scaling group.
+•	Define scaling policies based on metrics like CPU utilization.
+•	Configure launch configurations for instances.
+High-availability-RDS-and-Well-architected

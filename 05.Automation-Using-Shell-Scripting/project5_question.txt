@@ -1,0 +1,89 @@
+Capstone Project - Linux Administration and Shell Scripting
+
+
+Evaluation Criteria
+1.	Script Enhancement (30 points):
+•	1.1. CentOS Support (15 points):
+•	Successful extension of the provided script to include support for CentOS.
+•	Proper modification of functions and conditional statements for CentOS compatibility.
+•	1.2. Script Modularity (15 points):
+•	Clear organization of the script with modular functions for package installation, service management, and artifact deployment.
+•	Effective use of functions for different Linux distributions.
+
+2.	Infrastructure Setup (30 points):
+•	2.1. EC2 Instance Launch (15 points):
+•	Proper launch of EC2 instances with Amazon Linux, Ubuntu, and CentOS.
+•	Configuration of instance attributes such as instance type, security groups, and key pairs.
+•	2.2. Security Measures (15 points):
+•	Appropriate configuration of security groups to ensure optimal security measures.
+•	Proper setup of key pairs for secure remote access.
+
+3.	Remote Execution and Deployment (30 points):
+•	3.1. Script Upload (10 points):
+•	Successful upload of the enhanced script to a centralized server.
+•	Secure handling of the script to prevent unauthorized access.
+•	3.2. Remote Execution (10 points):
+•	Proper execution of the script on each instance remotely.
+•	Handling of dependencies and adjustments for different distributions.
+•	3.3. Apache Deployment (5 points):
+•	Successful deployment of the Apache web server on each instance.
+•	Verification of the Apache service status.
+•	3.4. Sample Web Application Deployment (5 points):
+•	Successful deployment of a sample web application on each instance.
+•	Verification of web application accessibility.
+
+4.	Documentation (20 points):
+•	4.1. Remote Deployment Process (7 points):
+•	Comprehensive documentation detailing the entire remote deployment process.
+•	Clear step-by-step instructions for each task, including script enhancement, infrastructure setup, and remote execution.
+•	4.2. Configuration Details (5 points):
+•	Detailed documentation of configurations made during infrastructure setup.
+•	Explanation of security measures implemented.
+•	4.3. Challenges and Solutions (5 points):
+•	Identification and documentation of challenges encountered during the project.
+•	Clear presentation of solutions implemented to overcome challenges.
+•	4.4. Key Findings and Insights (3 points):
+•	A brief report summarizing key findings and insights gained from the project.
+•	Reflection on the significance of deploying across multiple Linux distributions for system reliability.
+
+5.	Script Link Submission (20 points):
+•	5.1. Link Submission (20 points):
+•	Submission of a link to the script used for remote execution.
+•	Verification that the link provides access to the enhanced script with CentOS support.
+Total Points: 100
+
+Capstone Project: Shell Script for AWS IAM Management
+Project Scenario
+Datawise Solutions requires efficient management of AWS Identity and Access Management (IAM) resources. The company is expanding its team and needs to onboard five new employees to access AWS resources securely.
+Purpose
+In this capstone project, you will extend your shell scripting capabilities by creating more functions that extends the "aws_cloud_manager.sh" script
+Objectives:
+
+1.	Script Enhancement:
+•	Extend the provided script to include IAM management.
+2.	Define IAM User Names Array:
+•	Store the names of the five IAM users in an array for easy iteration during user creation.
+3.	Create IAM Users:
+•	Iterate through the IAM user names array and create IAM users for each employee using AWS CLI commands.
+4.	Create IAM Group:
+•	Define a function to create an IAM group named "admin" using the AWS CLI.
+5.	Attach Administrative Policy to Group:
+•	Attach an AWS-managed administrative policy (e.g., "AdministratorAccess") to the "admin" group to grant administrative privileges.
+6.	Assign Users to Group:
+•	Iterate through the array of IAM user names and assign each user to the "admin" group using AWS CLI commands.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

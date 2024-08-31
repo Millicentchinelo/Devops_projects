@@ -63,7 +63,12 @@ Explanation of the code snippet above
 2.	WORKDIR /usr/share/nginx/html/: Specifies the working directory in the container
 3.	COPY index.html /usr/share/nginx/html/: Copies the local index.html file to the NGINX default public directory, which is where NGINX serves static content from.
 4.	EXPOSE 80: Informs Docker that the NGINX server will use port 80. This is a documentation feature and doesn't actually publish the port.
-5.	CMD: NGINX images come with a default CMD to start the server, so there's no need to specify it explicitly.
+5.	CMD: NGINX images come with a default CMD to start the server, so there's no need to specify it explicitly. CMD is used to state the starting point or the command to run first when starting the app.
+6. Entrypoint: Does the same thing as CMD
+
+#### Difference between Entrypoint and CMD
+They both serve as your starting point or used to state the commands to run first when starting the app but CMD can be overrided while Entrypoint **can not** be bypassed. CMD can be passed by using a code that overrides in the terminal.
+
 
 
 -	Copy your HTML and CSS files into the Nginx HTML directory. (Use ChatGPT to generate a basic HTML and CSS code for a simple web application)
