@@ -491,5 +491,7 @@ install_apache
 - Always take note of colours and colour change, it could help you identify a mistake on time
 - Add the sleep 1 command where necessary
 - Error can occur due to case disparity, hence always ensure you are using the right, uppercase or lowercase as the command require, keeping in that the commands and bash are generally case sensitive. Uppercase and Lowercase of the same letter will produce different results
+
+  
 ![error](./img/02.errorEc2captalizationerror.png) 
 
