@@ -46,7 +46,6 @@ A Dockerfile is a plaintext configuration file that contains a set of instructio
 ```
 vim dockerfile
 ```
-![dockerlogin](./img/01.dockerlogin.png)
 
 - Copy and paste the below into the dockerfile
 ```
@@ -193,6 +192,8 @@ footer p {
     margin-bottom: 10px;
 }
 ```
+
+![dockerlogin](./img/01.dockerlogin.png)
 
 ## Push to Docker Hub
 -	Log in to Docker Hub.
