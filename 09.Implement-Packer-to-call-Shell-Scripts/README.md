@@ -2,7 +2,7 @@
 
 Packer is an open-source tool developed by HashiCorp that automates the creation of machine images for multiple platforms from a single source configuration. It enables you to package applications, server configurations, and dependencies into reusable images that can be deployed across various environments.
 
-#### Key Features of Packer:
+### Key Features of Packer:
 - Multi-Platform Support: Packer supports various platforms, including cloud providers (like AWS, Azure, GCP), virtualization platforms (like VMware, VirtualBox), and container formats (like Docker).
 - Infrastructure as Code: Packer allows you to define your machine images using a simple configuration file (in JSON or HCL format), enabling version control and collaborative workflows.
 - Automation: It automates the entire image creation process, reducing manual work and the chances of human error. This leads to consistent and repeatable builds.
@@ -11,7 +11,13 @@ Packer is an open-source tool developed by HashiCorp that automates the creation
 
 ## Background Scenario for this Project
 
-You have been assigned to develop a Finance website. Your objective is to utilize Packer to create AMI, develop the platform in a linux environment and deploy it on an AWS EC2 instance. Git will be used for version control. You are to use any suitable website template to kickstart your development. Free sample template can be found at: [Tooplate](https://tooplate.com)
+You have been assigned to develop a Finance website. Your objective is to utilize Packer to create AMI, develop the platform in a linux environment and deploy it on an AWS EC2 instance. Git will be used for version control. You are to use any suitable website template to kickstart your development. Free sample template can be found at: [Tooplate](https://tooplate.com) 
+
+## Project Pre-requisite
+-	Knowledge of AWS and AMI
+-	AWS CLI must be downloaded and configured on your IDE(VScode)
+- Packer must be pre-installed
+
 
 
 ## Initialize Git Repository
@@ -35,10 +41,12 @@ git commit -m "initial commit for packer"
 git push origin main
 ```
 ## Edit the Packer file 
-Use packer's official documentation as guide to create your own Packer file. 
+Edit the financeweb.pkr.hcl file, use packer's official documentation as guide to create the content of the Packer file. 
 Navigate to Packer's official website ([packer.io](https://packer.io)), Click on "tutorials", by the left, click on "AWS" and then, click on "Build an image". Copy and paste the official example, then edit to suite your project.
 
 ![tutorial](./img/02.packerfile_content.png)
+
+For this particular project, copy and paste the below into your financeweb.pkr.hcl:
 
 ```
 packer {
@@ -115,7 +123,7 @@ locals {
   timestamp = regex_replace(timestamp(), "[- TZ:]", "")
 }
 ```
-Defines a local variable timestamp that formats the current timestamp. This is useful for generating a unique AMI name. This unique AMI is important as it makes the script dynamic and reuseable without having to always edit the AMI name before creating any new version for the AMI.
+Defines a local variable timestamp that formats the current timestamp. This is useful for generating a unique AMI name. This unique AMI name is important as it makes the script dynamic and reuseable without having to always edit the AMI name before creating any new version for the AMI.
 
 To add the timestamp variable, on the packer official website, click on "tutorial", select "AWS", then click on "Variable"
 
@@ -158,7 +166,7 @@ This block defines the source configuration for creating the AMI:
 
 - ssh_username: The username to use for SSH access to the instance.
 
->>Note: in this case "ec2-user" is used because we are using Amazon Linux as our base image. If you can the base image, the ssh_username will change
+>>Note: in this case "ec2-user" is used because we are using Amazon Linux as our base image. If you change the base image, the ssh_username will change.
 
 4. **Build Block:**
 
@@ -250,9 +258,9 @@ sudo systemctl reload httpd
 
  ```
 
->>NOTE: It is important to start the shell script with a sleep command for 30seconds in order to allow time for the EC2 instance to be fully configured and running, below executing the commands.
+>>NOTE: It is important to start the shell script with a sleep command for 30seconds in order to allow time for the EC2 instance to be fully configured and running, before executing the commands.
 
-## **Initialize and build packer
+## Initialize and build packer
 
 ```
 packer init
@@ -268,13 +276,13 @@ Navigate to EC2 dashboard, click on AMIs and select the AMI just created. By the
 
 ![launchami](./img/15.launchami.png)
 
-Specification for the instance for this project:
+## Specification for the instance for this project:
 - Name: finance_website
 - Instance type: t2 micro
 - key pair: add key pair incase you need to ssh into the instance to troubleshoot.
 - Security group: It should allow ssh from port 22 and http from port 80
 
-## **Veiw Website Over the Internet**
+## **View Website Over the Internet**
 
 Select the instance created to expose its details. Copy and paste the public ip address on a web browser.
 
