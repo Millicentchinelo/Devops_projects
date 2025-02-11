@@ -276,7 +276,7 @@ Navigate to EC2 dashboard, click on AMIs and select the AMI just created. By the
 
 ![launchami](./img/15.launchami.png)
 
-## Specification for the instance for this project:
+## Specifications for the instance you are creating from the AMI:
 - Name: finance_website
 - Instance type: t2 micro
 - key pair: add key pair incase you need to ssh into the instance to troubleshoot.
@@ -298,7 +298,7 @@ Select the instance created to expose its details. Copy and paste the public ip 
 
 ![errorplugin](./img/08.errormissplugin.png)
 
-solution: I had to manual install it by running packer inatall
+**solution:** I had to manually install it by running "packer install the-missing-plugin".
 
 ```
 packer install github.com/hashicorp/amazon
@@ -311,29 +311,29 @@ packer install github.com/hashicorp/amazon
 
 ![itwork](./img/07.errorItworks.png)
 
-solution: i had to view the /var/www/html/ directory, which is the directory that houses the content of the file and i discovered it was empty. This was caused by an error in the spelling of the directory while copyng the files. 
+**solution:** I had to view the /var/www/html/ directory, which is the directory that houses the content of the file and I discovered it was empty. This was caused by an error in the spelling of the directory while copying the files. 
 
 ```
 ls -l /var/www/html/
 ```
 ![ls](./img/11.errorempty_ls.png)
 
-I corrected the spellings of the directories and ran the packer build command again which created a new AMI, which a used to deploy a new instance.
+I corrected the spellings of the directories and ran the packer build command again which created a new AMI, which I used to deploy a new instance.
 
 ```
 packer build financeweb.pkr.hcl
 ```
 
 
-3. Webpage not reflecting the content of the index.html file: when accessing the deployed website on a web browser, it wasn't showing the actual content, rather, it showed "It Works"
+3. Webpage not reflecting the content of the index.html file: when accessing the deployed website on a web browser, it wasn't showing the actual content, rather, it showed "It Works!".
 
-Solution: I initially only pasted the public ip address of the website but the website needed to point to something (or a port), which in this project case, it was the name of the folder. To check what the website is pointing to, use the command:
+**Solution:** I initially only pasted the public ip address of the website but the website needed to point to something (or a port), which in this project case, it was the name of the folder. To check what the website is pointing to, use the command:
 ```
 ls -l /var/www/html
 ```
 ![port](./img/17.port.png)
 
-Then I pasted the public ip of the instance/the template name and the issue was resolved.
+Then I pasted the public_ip_of_the_instance/the_template_name on my browser and the issue was resolved.
 
 ```
 http://instance_public_ip/2135_mini_finance
