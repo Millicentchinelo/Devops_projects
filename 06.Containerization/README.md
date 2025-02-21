@@ -46,6 +46,7 @@ A Dockerfile is a plaintext configuration file that contains a set of instructio
 ```
 vim dockerfile
 ```
+
 - Copy and paste the below into the dockerfile
 ```
 FROM nginx:latest
@@ -192,6 +193,8 @@ footer p {
 }
 ```
 
+![dockerlogin](./img/01.dockerlogin.png)
+
 ## Push to Docker Hub
 -	Log in to Docker Hub.
 
@@ -199,7 +202,6 @@ footer p {
 docker login
 ```
 Provide your Docker Hub credentials when prompted.
-![dockerlogin](./img/01.dockerlogin.png)
 -	Push your Docker image to Docker Hub.
 ```
 docker build -t your-dockerhub-username/my-nginx-app .
